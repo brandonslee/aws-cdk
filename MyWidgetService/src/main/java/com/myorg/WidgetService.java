@@ -3,6 +3,7 @@ package com.myorg;
 import java.util.HashMap;
 
 import software.amazon.awscdk.core.Construct;
+import software.amazon.awscdk.services.apigateway.IResource;
 import software.amazon.awscdk.services.apigateway.LambdaIntegration;
 import software.amazon.awscdk.services.apigateway.RestApi;
 import software.amazon.awscdk.services.lambda.Code;
@@ -33,11 +34,20 @@ public class WidgetService extends Construct {
             .description("This service services widgets.")
             .build();
 
-        LambdaIntegration getWidgetsIntegration = LambdaIntegration.Builder.create(handler)
-            .requestTemplates(new HashMap<String, String>() {{
-                put("application/json", "{ \"statusCode\": \"200\" }");
-            }}).build();
+        // Add new widget to bucket with: POST /{id}
+        LambdaIntegration postWidgetIntegration = new LambdaIntegration(handler);
 
-        api.getRoot().addMethod("GET", getWidgetsIntegration);
+        // Get a specific widget from bucket with: GET /{id}
+        LambdaIntegration getWidgetIntegration = new LambdaIntegration(handler);
+
+        // Remove a specific widget from the bucket with: DELETE /{id}
+        LambdaIntegration deleteWidgetIntegration = new LambdaIntegration(handler);
+
+        IResource widget = api.getRoot();
+
+        widget.addMethod("POST", postWidgetIntegration);     // POST /{id}
+        widget.addMethod("GET", getWidgetIntegration);       // GET /{id}
+        widget.addMethod("DELETE", deleteWidgetIntegration); // DELETE /{id}
+
     }
 }
