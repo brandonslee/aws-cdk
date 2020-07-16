@@ -13,5 +13,6 @@ public class MyWidgetServiceStack extends Stack {
         super(scope, id, props);
 
         // The code that defines your stack goes here
+        new WidgetService(this, "Widgets");
     }
 }
