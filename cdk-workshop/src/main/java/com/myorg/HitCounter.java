@@ -36,6 +36,12 @@ public class HitCounter extends Construct {
             .code(Code.fromAsset("lambda"))
             .environment(environment)
             .build();
+
+        // Grants the lambda function read/write permissions to our table
+        this.table.grantReadWriteData(this.handler);
+
+        // Grants the lambda function invoke permissions to the downstream function
+        props.getDownstream().grantInvoke(this.handler);
     }
 
     public Function getHandler() {
