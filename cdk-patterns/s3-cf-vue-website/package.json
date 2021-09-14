@@ -1,0 +1,15 @@
+{
+    "name": "cdkpatterns-s3-cf-vue-deploy",
+    "version": "1.0.0",
+    "description": "This is a pattern to deploy a vue website",
+    "scripts": {
+      "buildwebsite": "cd vue-helloworld && npm i && npm run build && cd ../",
+      "buildcdk": "cd cdk && npm i && npm run build && cd ../",
+      "build": "npm run buildwebsite && npm run buildcdk",
+      "build2": "npm run buildcdk",
+      "deploy": "npm run build2 && cd cdk && npm run deploy",
+      "test": "echo \"no ci/cd tests setup\""
+    },
+    "author": "",
+    "license": "ISC"
+  }
