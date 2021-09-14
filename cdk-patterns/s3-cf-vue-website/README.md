@@ -1,5 +1,7 @@
 This deploys a vue.js website to an S3 bucket with CloudFront.
-This refers to CDK Patterns. https://cdkpatterns.com/
+This refers to CDK Patterns. 
+  * https://cdkpatterns.com/
+  * https://cdkpatterns.com/patterns/filter/?by=React
 
 1. Create a project root dir
 * $ mkdir s3-cf-vue-website
