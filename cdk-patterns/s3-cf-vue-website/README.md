@@ -25,7 +25,7 @@ This refers to CDK Patterns.
 
 6. Install npm packages and modify lib/cdk-stack.ts referring to the below codes
   * https://github.com/cdk-patterns/serverless/blob/main/s3-react-website/typescript/cdk/lib/cdk-stack.ts
-  * $ npm install @aws-cdk/aws-s3-deployment @aws-cdk/aws-s3 cdk-spa-deploy
+  * $ npm install cdk-spa-deploy
 
 7. Add npm run script to package.json of CDK
   * "deploy": "cdk deploy '*' --require-approval 'never'"
